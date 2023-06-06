@@ -1,0 +1,14 @@
+div {
+  margin: 20px auto;
+  text-align: center;
+}
+
+input {
+  width: 60%;
+  border-radius: 10px;
+  text-indent: 10px;
+}
+
+.center-block {
+  text-align: center;
+}

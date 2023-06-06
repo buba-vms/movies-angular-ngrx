@@ -1,0 +1,23 @@
+<h2>My Favorite Movies</h2>
+<div class="container">
+  <div class="row">
+    <div
+      *ngFor="let fav of favorite$ | async"
+      class="col-md-6 col-lg-4 col-sm-12"
+    >
+      <div class="row movie-card">
+        <div class="col-sm-6">
+          <h3>{{ fav.title }}</h3>
+          <h6>Actors: {{ fav.actors }}</h6>
+          <p>{{ fav.plot }}</p>
+          <button class="btn btn-danger" (click)="removeFavByID(fav.imdbID)">
+            Remover
+          </button>
+        </div>
+        <div class="col-sm-6">
+          <img src="{{ fav.poster }}" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

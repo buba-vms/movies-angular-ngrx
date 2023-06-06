@@ -1,0 +1,13 @@
+svg {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+p {
+  max-width: 390px;
+  margin: 15px auto;
+}
+
+button {
+  margin-bottom: 10px;
+}

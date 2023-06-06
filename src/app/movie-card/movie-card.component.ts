@@ -36,13 +36,13 @@ export class MovieCardComponent implements OnInit {
   }
   ngOnInit(): void {
     this.movie$.subscribe((movie) => {
-      // this.tisFavorite = false;
       this.store.dispatch(setIsFavorite({ payload: false }));
 
       this.favorite$.subscribe((favoriteArray) => {
         favoriteArray.map((fav) => {
           if (fav.imdbID === movie.imdbID) {
-            // this.tisFavorite = true;
+            console.log(movie.title);
+
             this.store.dispatch(setIsFavorite({ payload: true }));
           }
         });
@@ -51,12 +51,9 @@ export class MovieCardComponent implements OnInit {
   }
 
   setIsFavorite(movieTitle: MovieState) {
-    // this.tisFavorite = !this.tisFavorite;
     this.isFavorite$.pipe(take(1)).subscribe((isFavorite) => {
-      console.log(isFavorite);
       const newIsFavorite = !isFavorite;
       this.store.dispatch(setIsFavorite({ payload: newIsFavorite }));
-      console.log(newIsFavorite);
 
       const payload = movieTitle;
 

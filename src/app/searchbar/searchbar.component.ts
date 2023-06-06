@@ -24,8 +24,6 @@ export class SearchbarComponent {
           `https://www.omdbapi.com/?i=tt3896198&apikey=7fc49c5b&t=${movieTitle}`
         )
         .then((response) => {
-          console.log(response.data);
-
           const payload = {
             actors: response.data.Actors,
             title: response.data.Title,

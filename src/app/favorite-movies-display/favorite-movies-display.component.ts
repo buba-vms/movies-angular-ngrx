@@ -21,18 +21,14 @@ export class FavoriteMoviesDisplayComponent implements OnInit {
     this.movie$ = store.select('movie');
   }
   ngOnInit(): void {
-    this.favorite$.subscribe((favorite) => {
-      console.log('ola');
-    });
+    this.favorite$.subscribe((favorite) => {});
   }
 
   removeFavByID(movieId: string) {
     if (movieId) {
       this.store.dispatch(removeFavoriteById({ payload: movieId }));
 
-      this.movie$.pipe(take(1)).subscribe((value) => {
-        console.log(value);
-
+      this.movie$.subscribe((value) => {
         if (value.imdbID === movieId) {
           this.store.dispatch(setIsFavorite({ payload: false }));
         }

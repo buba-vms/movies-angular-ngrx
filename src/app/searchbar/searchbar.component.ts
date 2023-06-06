@@ -21,7 +21,7 @@ export class SearchbarComponent {
     try {
       await axios
         .get(
-          `http://www.omdbapi.com/?i=tt3896198&apikey=7fc49c5b&t=${movieTitle}`
+          `https://www.omdbapi.com/?i=tt3896198&apikey=7fc49c5b&t=${movieTitle}`
         )
         .then((response) => {
           console.log(response.data);

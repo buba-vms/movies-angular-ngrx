@@ -19,13 +19,13 @@ export class MovieCardComponent implements OnInit {
   movie$: Observable<MovieState>;
   favorite$: Observable<MovieState[]>;
   isFavorite$: Observable<boolean>;
-
+  idToDelete$: Observable<string>;
   constructor(
     private store: Store<{
       isFavorite: boolean;
-
       movie: MovieState;
       favorite: MovieState[];
+      idToDelete: string;
     }>
   ) {
     this.isFavorite$ = store.select('isFavorite');
@@ -33,18 +33,21 @@ export class MovieCardComponent implements OnInit {
     this.movie$ = store.select('movie');
 
     this.favorite$ = store.select('favorite');
+
+    this.idToDelete$ = store.select('idToDelete');
   }
   ngOnInit(): void {
-    this.movie$.subscribe((movie) => {
-      this.store.dispatch(setIsFavorite({ payload: false }));
+    this.idToDelete$.subscribe((idToDelete) => {
+      this.movie$.subscribe((movie) => {
+        this.store.dispatch(setIsFavorite({ payload: false }));
 
-      this.favorite$.subscribe((favoriteArray) => {
-        favoriteArray.map((fav) => {
-          if (fav.imdbID === movie.imdbID) {
-            console.log(movie.title);
-
-            this.store.dispatch(setIsFavorite({ payload: true }));
-          }
+        this.favorite$.subscribe((favoriteArray) => {
+          favoriteArray.map((fav) => {
+            if (fav.imdbID === movie.imdbID && fav.imdbID !== idToDelete) {
+              console.log(movie.title);
+              this.store.dispatch(setIsFavorite({ payload: true }));
+            }
+          });
         });
       });
     });

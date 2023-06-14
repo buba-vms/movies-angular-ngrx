@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { favoriteReducer } from './ngrx/favorite.reducer';
 import { FavoriteMoviesDisplayComponent } from './favorite-movies-display/favorite-movies-display.component';
 import { isFavoriteReducer } from './ngrx/isfavorite.reducer';
+import { idToDeleteReducer } from './ngrx/id-to-delete.reducer';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { isFavoriteReducer } from './ngrx/isfavorite.reducer';
       movie: movieReducer,
       favorite: favoriteReducer,
       isFavorite: isFavoriteReducer,
+      idToDelete: idToDeleteReducer,
     }),
   ],
   providers: [],
